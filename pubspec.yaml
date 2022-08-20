@@ -21,7 +21,7 @@ dependencies:
   plugin_platform_interface: ^2.0.2
   permission_handler: ^10.0.0     
   path_provider: ^2.0.11
-  enx_flutter_plugin: 
+
 
 
   
