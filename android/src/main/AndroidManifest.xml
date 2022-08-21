@@ -7,22 +7,5 @@
     android:roundIcon="@mipmap/ic_launcher_round"
     android:supportsRtl="true"
     android:theme="@style/AppTheme">
-    <activity android:name=".MainActivity"
-        android:exported="true">
-        <intent-filter>
-            <action android:name="com.gallery.gallery.MainActivity" />
-            <category android:name="android.intent.category.DEFAULT" />
-        </intent-filter>
-    </activity>
-
-        <!--        <provider-->
-        <!--            android:name=""-->
-        <!--            android:authorities="com.gallery.gallery"-->
-        <!--            android:exported="false"-->
-        <!--            android:grantUriPermissions="true">-->
-        <!--            <meta-data-->
-        <!--                android:name="android.support.FILE_PROVIDER_PATHS"-->
-        <!--                android:resource="@xml/provider"/>-->
-        <!--        </provider>-->
     </application>
 </manifest>

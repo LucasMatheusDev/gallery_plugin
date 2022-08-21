@@ -54,33 +54,34 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Plugin example app'),
+          title: const Text('Plugin Gallery example'),
         ),
-        body: Column(
-          children: [
-            Center(
-              child: Text('Running on: $_platformVersion\n'),
-            ),
-            ValueListenableBuilder<String?>(
-              valueListenable: _valueNotifier,
-              builder: (context, value, child) {
-                return value == null
-                    ? const SizedBox()
-                    : SizedBox(
-                        height: 100,
-                        width: 100,
-                        child: Image(
-                          image: FileImage(File(value)),
-                          fit: BoxFit.cover,
-                          errorBuilder: (context, error, stackTrace) {
-                            debugPrint("ERROR $error");
-                            return Text(error.toString());
-                          },
-                        ),
-                      );
-              },
-            ),
-          ],
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Text('Image Selected'),
+              ValueListenableBuilder<String?>(
+                valueListenable: _valueNotifier,
+                builder: (context, value, child) {
+                  return value == null
+                      ? const SizedBox()
+                      : SizedBox(
+                          height: 300,
+                          width: 300,
+                          child: Image(
+                            image: FileImage(File(value)),
+                            fit: BoxFit.cover,
+                            errorBuilder: (context, error, stackTrace) {
+                              debugPrint("ERROR $error");
+                              return Text(error.toString());
+                            },
+                          ),
+                        );
+                },
+              ),
+            ],
+          ),
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () async {

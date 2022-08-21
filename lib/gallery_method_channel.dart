@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 import 'gallery_platform_interface.dart';
 
 /// An implementation of [GalleryPlatform] that uses method channels.
-class MethodChannelGallery extends GalleryPlatform with FlutterPlugin {
+class MethodChannelGallery extends GalleryPlatform {
   /// The method channel used to interact with the native platform.
   @visibleForTesting
   final methodChannel = const MethodChannel('gallery');
@@ -18,7 +18,10 @@ class MethodChannelGallery extends GalleryPlatform with FlutterPlugin {
 
   @override
   Future<String?> openGallery() async {
-    final image = await methodChannel_invokeMethod<String>("openGallery");
-    return image?.path;
+    try {
+      return await methodChannel.invokeMethod<String>('openGallery');
+    } catch (e) {
+      return null;
+    }
   }
 }

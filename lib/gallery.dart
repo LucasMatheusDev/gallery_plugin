@@ -24,8 +24,13 @@ class Gallery {
     if (await hasPermission()) {
       return true;
     } else {
-      final result = await Permission.storage.request();
-      return result.isGranted;
+      final result = await Future.wait([
+        Permission.storage.request(),
+        Permission.mediaLibrary.request(),
+        Permission.photos.request(),
+      ]);
+
+      return result.every((permission) => permission.isGranted);
     }
   }
 }
