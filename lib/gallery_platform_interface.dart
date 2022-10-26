@@ -23,17 +23,14 @@ abstract class GalleryPlatform extends PlatformInterface {
     _instance = instance;
   }
 
-
   Future<String?> getPlatformVersion() async {
-    final version =
-        await methodChannel.invokeMethod<String>('getPlatformVersion');
+    final version = await MethodChannelGallery().getPlatformVersion();
     return version;
   }
 
-
   Future<String?> openGallery() async {
     try {
-      return await methodChannel.invokeMethod<String>('openGallery');
+      return await MethodChannelGallery().openGallery();
     } catch (e) {
       return null;
     }
