@@ -24,12 +24,18 @@ abstract class GalleryPlatform extends PlatformInterface {
   }
 
 
-
-  Future<String?> getPlatformVersion() {
-    throw UnimplementedError('platformVersion() has not been implemented.');
+  Future<String?> getPlatformVersion() async {
+    final version =
+        await methodChannel.invokeMethod<String>('getPlatformVersion');
+    return version;
   }
 
-  Future<String?> openGallery() {
-    throw UnimplementedError('openGallery() has not been implemented.');
+
+  Future<String?> openGallery() async {
+    try {
+      return await methodChannel.invokeMethod<String>('openGallery');
+    } catch (e) {
+      return null;
+    }
   }
 }
